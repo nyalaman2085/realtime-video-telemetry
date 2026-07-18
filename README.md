@@ -18,6 +18,6 @@ An optimized, multi-threaded computer vision pipeline utilizing the YOLO11 archi
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/nyalaman2085/person-detector.git]
-   cd person-detector
+   git clone https://github.com/nyalaman2085/realtime-video-telemetry.git
+cd realtime-video-telemetry
    ```
