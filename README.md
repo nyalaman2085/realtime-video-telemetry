@@ -1,18 +1,23 @@
-# Smoothed Person Detection Pipeline using YOLO11 & OpenCV
+# Real-Time Edge Computer Vision & Telemetry Pipeline
 
-An optimized, production-ready computer vision pipeline designed to solve a common machine learning engineering challenge: erratic bounding box flicker and false-positive ambient noise in real-time streams.
+An optimized, multi-threaded computer vision pipeline utilizing the YOLO11 architecture for highly accurate object tracking, spatial-temporal filtering, and automated analytics logging.
 
-## 🚀 Features & Engineering Solutions
+## 🚀 Key Features
 
-- **State-of-the-Art Core:** Upgraded from legacy MobileNet architectures to the ultra-fast, high-accuracy **Ultralytics YOLO11n** framework.
-- **Temporal Smoothing Filter:** Leverages deep byte-tracking identification numbers combined with a custom frame persistence validation mechanism. Bounding boxes are only rendered once an object successfully persists across **3 consecutive frames**, removing high-frequency background flicker.
-- **Multi-Stage Spatial Filtering:** Implements rigid minimum dimension bounds (width < 80px, height < 120px) alongside an adaptive area mask requiring target frames to consume at least **3% of the total screen space**, successfully neutralizing distant background noise.
-- **Gaussian Noise Mitigation:** Integrates localized pre-processing frame blurs to stabilize variance factors prior to model forwarding layers.
+- **Multi-Threaded Video Ingestion:** Decouples frame reading from processing loops to maximize frame-rate stability and minimize input latency.
+- **Temporal Smoothing:** Implements a strict 3-frame persistence verification algorithm to eliminate false-positive detections and bounding-box flickering.
+- **Asynchronous Telemetry:** Exfiltrates real-time time-series data frame-by-frame (`occupancy_log.csv`) and captures precise object lifetime metrics (`dwell_time_log.csv`).
+
+## 📁 System Architecture
+
+- `detector.py`: Main execution layer initializing the multi-threaded capture, YOLO tracking inference, and log handling.
+- `occupancy_log.csv`: Continuous time-series spreadsheet tracking live frame occupancy timestamps.
+- `dwell_time_log.csv`: Event-driven spreadsheet logging individual Track IDs, precise arrival/departure clocks, and total duration metrics.
 
 ## 🛠️ Installation & Setup
 
-1. Clone this repository:
+1. Clone the repository:
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/smoothed-yolo11-person-detector.git](https://github.com/YOUR_USERNAME/smoothed-yolo11-person-detector.git)
-   cd smoothed-yolo11-person-detector
+   git clone [https://github.com/nyalaman2085/person-detector.git]
+   cd person-detector
    ```
