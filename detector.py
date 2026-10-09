@@ -77,7 +77,6 @@ def run_detector(source_path=0, output_path="webcam_output.mp4"):
 
     track_seen = {}
     track_started = {}
-    track_last_seen = {}
     track_entry_clock = {}
     track_missing = {}
     frame_index = 0
@@ -183,7 +182,6 @@ def run_detector(source_path=0, output_path="webcam_output.mp4"):
                     current_ids.add(track_id)
                     track_seen[track_id] = track_seen.get(track_id, 0) + 1
                     track_missing[track_id] = 0
-                    track_last_seen[track_id] = now_monotonic
 
                     if track_seen[track_id] == PERSISTENCE_FRAMES:
                         track_started[track_id] = now_monotonic
@@ -217,7 +215,6 @@ def run_detector(source_path=0, output_path="webcam_output.mp4"):
                             ])
                         track_seen.pop(track_id, None)
                         track_started.pop(track_id, None)
-                        track_last_seen.pop(track_id, None)
                         track_entry_clock.pop(track_id, None)
                         track_missing.pop(track_id, None)
 
