@@ -1,0 +1,20 @@
+# Python environments and bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Model weights (downloaded by Ultralytics)
+yolo11n.pt
+*.pt
+
+# Generated video and telemetry outputs
+*.mp4
+occupancy_log.csv
+dwell_time_log.csv
+
+# Editor / OS files
+.DS_Store
+.vscode/
+.idea/
