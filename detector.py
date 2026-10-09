@@ -204,6 +204,9 @@ def run_detector(source_path=0, output_path="webcam_output.mp4"):
             for track_id in list(track_seen):
                 if track_id not in current_ids:
                     track_missing[track_id] = track_missing.get(track_id, 0) + 1
+                    # Before a track is stable, persistence must be consecutive.
+                    if track_id not in track_started:
+                        track_seen[track_id] = 0
                     if track_missing[track_id] > MAX_MISSING_FRAMES:
                         if track_id in track_started:
                             duration = max(0.0, now_monotonic - track_started[track_id])
