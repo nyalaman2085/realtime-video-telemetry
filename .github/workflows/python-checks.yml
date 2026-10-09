@@ -1,0 +1,25 @@
+name: Python Project Checks
+
+on:
+  push:
+    branches: ["main", "portfolio/final-validation"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile Python source
+        run: python -m py_compile detector.py thread.py
+      - name: Validate dependency manifest
+        run: python -c "from pathlib import Path; p=Path('requirements.txt'); assert p.exists() and p.read_text().strip(), 'requirements.txt is missing or empty'"
