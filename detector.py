@@ -136,6 +136,8 @@ def run_detector(source_path=0, output_path="webcam_output.mp4"):
 
         while True:
             if is_live:
+                if webcam.is_stopped():
+                    break
                 frame = webcam.read()
                 if frame is None:
                     if webcam.is_stopped():
